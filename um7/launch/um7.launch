@@ -1,0 +1,11 @@
+<launch>
+
+   <node name="um7_driver" pkg="um7" type="um7_driver"/>
+
+   <node name="imu_filter" pkg="imu_filter_madgwick" type="imu_filter_node"/>
+
+  <rosparam command="load" file="$(find robot_localization)/params/dual_ekf_navsat_example.yaml" />
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_odom" clear_params="true"/>
+
+</launch>
